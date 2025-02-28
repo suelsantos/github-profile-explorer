@@ -1,0 +1,39 @@
+<div class="container mt-5">
+  <div class="row">
+    <!-- Coluna para a Card do Usuário -->
+    <div class="col-md-4">
+      <div class="card">
+        <!-- Avatar -->
+        <img [src]="userData?.avatar_url" class="card-img-top" alt="User Avatar">
+        <div class="card-body">
+          <!-- Nome e Username -->
+          <h5 class="card-title">{{ userData.name || 'Nome não disponível' }}</h5>
+          <p class="card-text text-muted">@{{ userData?.login }}</p>
+
+          <!-- Link para o perfil do GitHub -->
+          <a [href]="userData?.html_url" target="_blank" class="btn btn-primary">Visit GitHub Profile</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Coluna para as Informações do Usuário -->
+    <div class="col-md-8">
+      <!-- Informações do Usuário -->
+      <div class="list-group">
+        <p class="list-group-item"><strong>Link GitHub:</strong> <a [href]="userData?.html_url" target="_blank">{{ userData?.html_url }}</a></p>
+        <p class="list-group-item" *ngIf="userData?.blog"><strong>Link Blog:</strong> <a [href]="userData?.blog" target="_blank">{{ userData?.blog }}</a></p>
+        <p class="list-group-item"><strong>Empresa:</strong> {{ userData?.company || 'Não informado' }}</p>
+        <p class="list-group-item"><strong>Localização:</strong> {{ userData?.location || 'Não informado' }}</p>
+        <p class="list-group-item"><strong>Número de Repositórios Públicos:</strong> {{ userData?.public_repos }}</p>
+        <p class="list-group-item"><strong>Followers:</strong> {{ userData?.followers }}</p>
+        <p class="list-group-item"><strong>Following:</strong> {{ userData?.following }}</p>
+
+        <!-- Botão para exibir a Bio -->
+        <p class="list-group-item">
+          <strong>Bio:</strong>
+          <button class="btn btn-info btn-sm">Ver Bio</button>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

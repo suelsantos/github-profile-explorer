@@ -1,0 +1,43 @@
+<div class="container my-5">
+  <h2 class="mb-4">Dados do Usuário</h2>
+
+  <!-- Avatar -->
+  <div class="d-flex justify-content-center mb-4">
+    <img [src]="userData.avatar_url" alt="Avatar" class="rounded-circle" width="150" height="150" />
+  </div>
+
+  <!-- Informações do usuário -->
+  <div class="list-group">
+    <p class="list-group-item"><strong>Nome:</strong> {{ userData.name }}</p>
+    <p class="list-group-item"><strong>Username:</strong> {{ userData.login }}</p>
+    <p class="list-group-item">
+      <strong>Bio:</strong>
+      <button class="btn btn-link" (click)="openBioModal()">Exibir Bio</button>
+    </p>
+    <p class="list-group-item"><strong>Link GitHub:</strong> <a [href]="userData.html_url" target="_blank">{{ userData.html_url }}</a></p>
+    <p class="list-group-item" *ngIf="userData.blog"><strong>Link Blog:</strong> <a [href]="userData.blog" target="_blank">{{ userData.blog }}</a></p>
+    <p class="list-group-item"><strong>Empresa:</strong> {{ userData.company || 'Não informado' }}</p>
+    <p class="list-group-item"><strong>Localização:</strong> {{ userData.location || 'Não informado' }}</p>
+    <p class="list-group-item"><strong>Número de Repositórios Públicos:</strong> {{ userData.public_repos }}</p>
+    <p class="list-group-item"><strong>Número de Followers:</strong> {{ userData.followers }}</p>
+    <p class="list-group-item"><strong>Número de Followings:</strong> {{ userData.following }}</p>
+  </div>
+
+  <!-- Modal da Bio -->
+  <div class="modal fade" id="bioModal" tabindex="-1" aria-labelledby="bioModalLabel" aria-hidden="true" [ngClass]="{ 'show': showBioModal }" style="display: block;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="bioModalLabel">Bio do Usuário</h5>
+          <button type="button" class="btn-close" (click)="closeBioModal()" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>{{ userData.bio || 'Não disponível' }}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeBioModal()">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

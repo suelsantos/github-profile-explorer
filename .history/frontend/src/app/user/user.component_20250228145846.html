@@ -1,0 +1,18 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <img [src]="userData?.avatar_url" class="card-img-top" alt="User Avatar">
+        <div class="card-body">
+          <h5 class="card-title">{{ userData.namex }}</h5>
+          <p class="card-text">{{ userData.bio }}</p>
+          <a [href]="userData?.html_url" target="_blank" class="btn btn-primary">Visit GitHub Profile</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <h3>Followers: {{ userData.followers }}</h3>
+      <h3>Following: {{ userData.following }}</h3>
+    </div>
+  </div>
+</div>

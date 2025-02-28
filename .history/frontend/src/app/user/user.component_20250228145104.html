@@ -1,0 +1,30 @@
+<div class="user-container">
+  <h2>DADOS DO USUÁRIO</h2>
+
+  <!-- Avatar -->
+  <div class="avatar">
+    <img [src]="userData?.avatar_url" alt="Avatar" width="150" />
+  </div>
+
+  <!-- Nome -->
+  <div class="user-info">
+    <p><strong>Nome:</strong> {{ userData.name }}</p>
+    <p><strong>Username:</strong> {{ userData.login }}</p>
+    <p><strong>Bio:</strong> <a href="#" (click)="openBioModal()">Exibir Bio</a></p>
+    <p><strong>Link GitHub:</strong> <a [href]="userData.html_url" target="_blank">Visitar</a></p>
+    <p><strong>Link Blog:</strong> <a [href]="userData.blog" target="_blank" *ngIf="userData.blog">Visitar</a></p>
+    <p><strong>Empresa:</strong> {{ userData.company }}</p>
+    <p><strong>Localização:</strong> {{ userData.location }}</p>
+    <p><strong>Número de Repositórios Públicos:</strong> {{ userData.public_repos }}</p>
+    <p><strong>Número de Followers:</strong> {{ userData.followers }}</p>
+    <p><strong>Número de Followings:</strong> {{ userData.following }}</p>
+  </div>
+
+  <!-- Modal de Bio -->
+  <div class="modal" *ngIf="showBioModal" (click)="closeBioModal()">
+    <div class="modal-content">
+      <p>{{ userData.bio }}</p>
+      <button (click)="closeBioModal()">Fechar</button>
+    </div>
+  </div>
+</div>

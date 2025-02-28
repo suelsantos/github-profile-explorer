@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: github_explorer_backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DB_CONNECTION=pgsql
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_DATABASE=github_explorer
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=secret
+    volumes:
+      - ./backend:/var/www/html
+
+  frontend:
+    build: ./frontend
+    container_name: github_explorer_frontend
+    ports:
+      - "4200:4200"
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+    stdin_open: true
+    tty: true
+
+  db:
+    image: postgres:latest
+    container_name: github_explorer_db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: github_explorer
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

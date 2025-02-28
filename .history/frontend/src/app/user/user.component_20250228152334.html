@@ -1,0 +1,38 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <img [src]="userData.avatar_url" class="card-img-top" alt="User Avatar">
+        <div class="card-body">
+          <h5 class="card-title">{{ userData.name }}</h5>
+          <p class="card-text text-muted">{{ userData.login }}</p>
+
+          <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#bioModal">
+            Ver Bio
+          </button>
+
+          <a [href]="userData?.html_url" target="_blank" class="btn btn-primary">Visitar Perfil GitHub</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="list-group">
+        <!-- Link Blog -->
+        <p *ngIf="userData?.blog" class="list-group-item"><strong>Link Blog:</strong> <a [href]="userData?.blog" target="_blank">{{ userData?.blog }}</a></p>
+
+        <!-- Empresa -->
+        <p class="list-group-item"><strong>Empresa:</strong> {{ userData?.company || 'Não informado' }}</p>
+
+        <!-- Localização -->
+        <p class="list-group-item"><strong>Localização:</strong> {{ userData?.location || 'Não informado' }}</p>
+
+        <!-- Número de Repositórios Públicos -->
+        <p class="list-group-item"><strong>Repositórios Públicos:</strong> {{ userData?.public_repos }}</p>
+
+        <!-- Followers e Following -->
+        <p class="list-group-item"><strong>Seguidores:</strong> {{ userData?.followers }}</p>
+        <p class="list-group-item"><strong>Seguindo:</strong> {{ userData?.following }}</p>
+      </div>
+    </div>
+  </div>
+</div>

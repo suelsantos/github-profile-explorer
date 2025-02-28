@@ -1,0 +1,66 @@
+<div class="container mt-5">
+  <div class="row">
+    <nav class="col-md-3">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <a class="nav-link">Perfil</a>
+        </li>
+        <li class="list-group-item">
+          <a lass="nav-link">Seguindo</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="col-md-4">
+      <div class="card">
+        <img [src]="userData?.avatar_url" class="card-img-top" alt="User Avatar">
+        <div class="card-body">
+          <h5 class="card-title">{{ userData?.name }}</h5>
+          <p class="card-text text-muted">{{ userData?.login }}</p>
+
+          <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#bioModal">
+            Ver Bio
+          </button>
+
+          <div class="modal fade" id="bioModal" tabindex="-1" aria-labelledby="bioModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="bioModalLabel">Bio do Usuário</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  {{ userData?.bio || 'Bio não disponível' }}
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <a [href]="userData?.html_url" target="_blank" class="btn btn-primary">Visitar Perfil GitHub</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="list-group">
+        <!-- Link Blog -->
+        <p class="list-group-item"><strong>Blog: </strong> <a [href]="userData?.blog" target="_blank">{{ userData?.blog }}</a></p>
+
+        <!-- Empresa -->
+        <p class="list-group-item"><strong>Empresa:</strong> {{ userData?.company || 'Não informado' }}</p>
+
+        <!-- Localização -->
+        <p class="list-group-item"><strong>Localização:</strong> {{ userData?.location || 'Não informado' }}</p>
+
+        <!-- Número de Repositórios Públicos -->
+        <p class="list-group-item"><strong>Repositórios Públicos:</strong> {{ userData?.public_repos }}</p>
+
+        <!-- Followers e Following -->
+        <p class="list-group-item"><strong>Seguidores:</strong> {{ userData?.followers }}</p>
+        <p class="list-group-item"><strong>Seguindo:</strong> {{ userData?.following }}</p>
+      </div>
+    </div>
+  </div>
+</div>

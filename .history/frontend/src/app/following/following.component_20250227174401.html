@@ -1,0 +1,14 @@
+<div class="container mt-5">
+  <h3>Users Following {{ username }}</h3>
+  <div class="row">
+    <div *ngFor="let following of followingData" class="col-md-3">
+      <div class="card">
+        <img [src]="following.avatar_url" class="card-img-top" alt="Following Avatar">
+        <div class="card-body">
+          <h5 class="card-title">{{ following.login }}</h5>
+          <a [href]="following.html_url" target="_blank" class="btn btn-primary">View Profile</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

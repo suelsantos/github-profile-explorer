@@ -1,0 +1,20 @@
+<div class="container mt-5">
+  <div class="row">
+    <!-- Menu Lateral -->
+    <nav class="col-md-3">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <a [routerLink]="['/user', username]" routerLinkActive="active" class="nav-link">Perfil</a>
+        </li>
+        <li class="list-group-item">
+          <a [routerLink]="['/user', username, 'followings']" routerLinkActive="active" class="nav-link">Seguindo</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Conteúdo Dinâmico -->
+    <div class="col-md-9">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <!-- Card com as informações do usuário -->
+      <div class="card shadow-lg">
+        <div class="card-body text-center">
+          <!-- Avatar -->
+          <img [src]="userData.avatar_url" alt="Avatar" class="rounded-circle mb-4" width="150" height="150" />
+          <h3 class="card-title">{{ userData?.name || 'Nome não disponível' }}</h3>
+          <p class="card-text text-muted">@{{ userData.login }}</p>
+
+          <!-- Informações principais -->
+          <div class="list-group list-group-flush">
+            <p class="list-group-item"><strong>Link GitHub:</strong> <a [href]="userData.html_url" target="_blank">{{ userData.html_url }}</a></p>
+            <p class="list-group-item" *ngIf="userData.blog"><strong>Link Blog:</strong> <a [href]="userData.blog" target="_blank">{{ userData.blog }}</a></p>
+            <p class="list-group-item"><strong>Empresa:</strong> {{ userData.company || 'Não informado' }}</p>
+            <p class="list-group-item"><strong>Localização:</strong> {{ userData.location || 'Não informado' }}</p>
+            <p class="list-group-item"><strong>Número de Repositórios Públicos:</strong> {{ userData.public_repos }}</p>
+            <p class="list-group-item"><strong>Número de Followers:</strong> {{ userData.followers }}</p>
+            <p class="list-group-item"><strong>Número de Followings:</strong> {{ userData.following }}</p>
+            <p class="list-group-item">
+              <strong>Bio:</strong>
+              <button class="btn btn-info btn-sm" (click)="openBioModal()">Ver Bio</button>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal da Bio -->
+      <div class="modal fade" id="bioModal" tabindex="-1" aria-labelledby="bioModalLabel" aria-hidden="true" [ngClass]="{ 'show': showBioModal }" style="display: block;">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="bioModalLabel">Bio do Usuário</h5>
+              <button type="button" class="btn-close" (click)="closeBioModal()" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>{{ userData.bio || 'Bio não disponível' }}</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="closeBioModal()">Fechar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

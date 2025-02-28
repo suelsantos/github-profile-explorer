@@ -5,8 +5,7 @@ import { FollowingComponent } from './following/following.component';
 
 export const routes: Routes = [
   { path: 'user/:username', component: UserComponent },
-  { path: 'user/:username/followings', component: FollowingComponent },
-  { path: '', redirectTo: '/user/joaorca', pathMatch: 'full' }
+  { path: 'user/:username/followings', component: FollowingComponent }
 ];
 
 @NgModule({

@@ -12,13 +12,16 @@ import { GitHubService } from '../github.service';
 export class FollowingComponent implements OnInit {
   username: string = '';
   followingData: any;
+  isLoading: boolean = true;
 
   constructor(private route: ActivatedRoute, private githubService: GitHubService) { }
 
   ngOnInit(): void {
     this.username = this.route.snapshot.paramMap.get('username')!;
+
     this.githubService.getFollowingData(this.username).subscribe(data => {
       this.followingData = data;
+      this.isLoading = false;  // Após a requisição, define isLoading como false
     });
   }
 }

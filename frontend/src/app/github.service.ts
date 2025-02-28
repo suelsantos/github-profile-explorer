@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class GitHubService {
-  private baseUrl = 'https://api.github.com/users/';
+  private baseUrl = 'http://localhost:8000/api/user/';
 
   constructor(private http: HttpClient) { }
 
@@ -15,6 +15,6 @@ export class GitHubService {
   }
 
   getFollowingData(username: string): Observable<any> {
-    return this.http.get(`${this.baseUrl}${username}/following`);
+    return this.http.get(`${this.baseUrl}${username}/followings`);
   }
 }

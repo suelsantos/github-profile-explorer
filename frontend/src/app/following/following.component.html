@@ -1,12 +1,38 @@
-<div class="container mt-5">
-  <h3>Users Following {{ username }}</h3>
+<!-- MENU FIXO NO TOPO -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="/user/{{ username }}">GitHub Profile Explorer</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a href="/user/{{ username }}" class="nav-link">Perfil</a>
+        </li>
+        <li class="nav-item">
+          <a href="/user/{{ username }}/followings" class="nav-link active">Seguindo</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-5 pt-5">
+  <div *ngIf="isLoading" class="text-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Carregando...</span>
+    </div>
+    <p>Carregando dados...</p>
+  </div>
+
   <div class="row">
     <div *ngFor="let following of followingData" class="col-md-3">
       <div class="card">
         <img [src]="following.avatar_url" class="card-img-top" alt="Following Avatar">
         <div class="card-body">
           <h5 class="card-title">{{ following.login }}</h5>
-          <a [href]="following.html_url" target="_blank" class="btn btn-primary">View Profile</a>
+          <a [href]="following.html_url" target="_blank" class="btn btn-primary">Ver Perfil</a>
         </div>
       </div>
     </div>
